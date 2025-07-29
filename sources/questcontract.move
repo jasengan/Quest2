@@ -5,19 +5,13 @@
 // For Move coding conventions, see
 // https://docs.sui.io/concepts/sui-move-concepts/conventions
 module questcontract::questcontract {
-    use std::option::{Self, Option};
     use std::string::{Self, String};
-    use std::vector;
     use sui::balance::{Self, Balance};
     use sui::clock::{Self, Clock};
     use sui::coin::{Self, Coin};
     use sui::event;
-    use sui::hash;
-    use sui::object::{Self, UID};
     use sui::sui::SUI;
     use sui::table::{Self, Table};
-    use sui::transfer;
-    use sui::tx_context::{Self, TxContext};
     use sui::vec_set::{Self, VecSet};
 
 // Error codes
