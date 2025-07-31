@@ -78,6 +78,8 @@ module questcontract::questcontract {
         username: String,
         email_hash: vector<u8>, // Hashed email for privacy
         walrus_profile_blob_id: String,
+        description: String,
+        role: String,
         reputation_score: u64,
         total_earned: u64,
         bouties_completed: u64,
@@ -288,8 +290,9 @@ module questcontract::questcontract {
         username: String,
         email_hash: vector<u8>,
         walrus_profile_blob_id: String,
+        description: String,
         skills: vector<String>,
-        languages: vector<String>,
+        role: String,
         clock: &Clock,
         ctx: &mut TxContext,
     ) {
@@ -303,18 +306,14 @@ module questcontract::questcontract {
             vec_set::insert(&mut skills_set, *vector::borrow(&skills, i));
             i = i + 1;
         };
-        
-        i = 0;
-        while (i < vector::length(&languages)) {
-            vec_set::insert(&mut languages_set, *vector::borrow(&languages, i));
-            i = i + 1;
-        };
 
         let profile = UserProfile {
             wallet_address: user_address,
             username,
             email_hash,
             walrus_profile_blob_id,
+            description,
+            role,
             reputation_score: 100,
             total_earned: 0,
             bouties_completed: 0,
